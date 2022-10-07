@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "ARMASH_203"
+      POSTGRES_USER: "ARMASH_203"
+      POSTGRES_PASSWORD: "ARMASH_203"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/scripts/library:/docker-entrypoint-initdb.d
+      - ./docker/db/config/lib.conf:/var/lib/postgresql/data/postgresql.conf
+    ports:
+      - "15432:5432"
